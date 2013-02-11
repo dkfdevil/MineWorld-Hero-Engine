@@ -33,7 +33,7 @@ namespace HeroEngine.Render
         Point screen_tile;
         Lighting lghting;
         GameScreen game;
-
+        
         public int tilesrendered = 0;
         List<RectangleRenderItem> ItemsToRender = new List<RectangleRenderItem>();
         List<RectangleRenderItem> LastItemsToRender = new List<RectangleRenderItem>();
@@ -139,13 +139,23 @@ namespace HeroEngine.Render
                 {
                     relative_cord.Y++;
                     Texture2D tile_tex;
+                    Tile tile;
                     if (x < 0 || y < 0 || x >= EngineLimit.TotalMapAreaWidth || y >= EngineLimit.TotalMapAreaHeight)
                     {
-                        tile_tex = GameResources.textures.GetResource("BLANK");
+                        tile = null;
                     }
                     else
                     {
-                        tile_tex = GameResources.textures.GetResource(tiles_to_render[x, y].Type);
+                        tile = tiles_to_render[x, y];
+                    }
+
+                    if (tile == null)
+                    {
+                        tile_tex = GameResources.textures.GetResource("WATER");
+                    }
+                    else
+                    {
+                        tile_tex = tile.tex.sheet;
                     }
 
                     Rectangle pos = new Rectangle((relative_cord.X * TileSize.X) //MarkerX
@@ -153,7 +163,14 @@ namespace HeroEngine.Render
                                                   - (precise.X + (TileSize.X / 2)) //Precise Layer
                                                   , (relative_cord.Y * TileSize.Y) - (TileSize.Y / 2) - TileSize.Y - (precise.Y + (TileSize.Y / 2)), TileSize.X, TileSize.Y);
                     RectangleRenderItem item = new RectangleRenderItem(tile_tex, pos, Color.White);
+                    if (!(tile == null))
+                    {
+                        item = new RectangleRenderItem(tile_tex, pos, Color.White);
+                        item.SourceRectangle = tile.tex.GetSourceRectange();
+                        tile.tex.StepFrameForward();
+                    }
                     ItemsToRender.Add(item);
+                    
                 }
                 relative_cord.Y = 0;
             }

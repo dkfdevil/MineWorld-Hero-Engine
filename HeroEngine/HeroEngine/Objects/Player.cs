@@ -23,6 +23,7 @@ namespace HeroEngine.Objects
         public static Point PLR_SIZE = new Point(16, 16); 
         public bool IsControlled = false;
         public Point bounds = new Point(4, 4);
+        public Point SpeedMod = new Point();
         //Player Stats
         public Skeleton skeleton;
         public float Money = 0;
@@ -42,16 +43,13 @@ namespace HeroEngine.Objects
             vp = viewport;
             binding = control;
 
-            skeleton = new Skeleton(this);
+            skeleton = new Skeleton(this,true);
 
-            Texture2D holder = GameResources.textures.GetResource("PLAYER_STAND");
-            skeleton.ParentBone("HEAD", new AnimatedTexture(holder, holder.Bounds, 1, 1000), holder.Bounds, Vector2.Zero);
-
-            holder = (Texture2D)GameResources.textures.GetResource("PLAYER_WALK");
-            
+            Texture2D holder = (Texture2D)GameResources.textures.GetResource("PLAYER_WALK");
             skeleton.ParentBone("LEGS", new AnimatedTexture(holder, new Rectangle(0, 0, 24, 48), 9, 200), new Rectangle(0, 0, 23, 48), Vector2.Zero);
-            
 
+            holder = GameResources.textures.GetResource("PLAYER_STAND");
+            skeleton.ParentBone("HEAD", new AnimatedTexture(holder, holder.Bounds, 1, 1000), holder.Bounds, Vector2.Zero);
             
             skeleton.GetBone("HEAD").ParentRotation = true;
             torchkey = new KeyCheck(binding.GetBoundKeyName("TORCH"));
@@ -72,7 +70,8 @@ namespace HeroEngine.Objects
             Movement();
             Rotation(); //Rotation Controls
             OtherControls(); //Torch or crouch.
-
+            SpeedMod.X = (int)(GameVariables.PLR_SPEEDX * EngineLimit.TileScaleX);
+            SpeedMod.Y = (int)(GameVariables.PLR_SPEEDY * EngineLimit.TileScaleY);
             //Placement on screen.
             Size.Width = (int)(PLR_SIZE.X * EngineLimit.TileScaleX) ;
             Size.Height = (int)(PLR_SIZE.Y * EngineLimit.TileScaleY);
@@ -104,7 +103,7 @@ namespace HeroEngine.Objects
             if (binding.GetBindValue("MOVEUP") && Marker.y > bounds.Y)
             {
                 if (!CanMove(Direction.North)) { return false; }
-                speed_buffer.Y -= GameVariables.PLR_SPEED / TileSize.Y;
+                speed_buffer.Y -= (float)SpeedMod.Y / TileSize.Y;
                 moved = true;
                 skeleton.GetBone("LEGS").texture.StepFrameForward();
 
@@ -124,7 +123,7 @@ namespace HeroEngine.Objects
             if (binding.GetBindValue("MOVEDOWN") && Marker.y < EngineLimit.TotalMapAreaHeight - bounds.Y)
             {
                 if (!CanMove(Direction.South)) { return false; }
-                speed_buffer.Y += GameVariables.PLR_SPEED / TileSize.Y;
+                speed_buffer.Y += (float)SpeedMod.Y / TileSize.Y;
                 moved = true;
                 skeleton.GetBone("LEGS").texture.StepFrameForward();
 
@@ -144,7 +143,7 @@ namespace HeroEngine.Objects
             if (binding.GetBindValue("MOVELEFT") && Marker.x > bounds.X)
             {
                 if (!CanMove(Direction.West)) { return false; }
-                speed_buffer.X -= GameVariables.PLR_SPEED / TileSize.X;
+                speed_buffer.X -= (float)SpeedMod.X / TileSize.X;
                 moved = true;
                 skeleton.GetBone("LEGS").texture.StepFrameForward();
 
@@ -166,7 +165,7 @@ namespace HeroEngine.Objects
             if (binding.GetBindValue("MOVERIGHT") && Marker.x < EngineLimit.TotalMapAreaWidth - bounds.X)
             {
                 if (!CanMove(Direction.East)) { return false; }
-                speed_buffer.X += GameVariables.PLR_SPEED / TileSize.X;
+                speed_buffer.X += (float)SpeedMod.X / TileSize.X;
                 skeleton.GetBone("LEGS").texture.StepFrameForward();
 
                 //if (skeleton.GetBone("LEGS").rotation < angles[(int)Direction.East])

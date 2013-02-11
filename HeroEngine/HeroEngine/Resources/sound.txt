@@ -1,0 +1,5 @@
+//To add a resource (yes modders, over here). Use this syntax:
+//GRASS_NORMAL:Tiles/tile-00
+//Newlines are new files.
+//TYPE is not too important for modders. (Texture, Sound, Music)
+TYPE:Sound

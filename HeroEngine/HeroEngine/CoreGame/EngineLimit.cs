@@ -34,7 +34,7 @@ namespace HeroEngine
         public const string CoreResPath_Custom = "/reslist/custom";
 
         public const string TileDBFileName = "/reslist/TileLookup.db";
-        public const string BindFileName = "binding";
+        public const string BindFileName = "/cfg/binding";
 
         public static float TileScaleX = 0;
         public static float TileScaleY = 0;
