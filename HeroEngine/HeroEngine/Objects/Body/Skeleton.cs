@@ -14,15 +14,17 @@ namespace HeroEngine.Objects.Body
         public Vector2 position;
         public float rotation;
         SpriteBatch sb;
-        public Skeleton(Entity parent)
+        bool IsScaled = true;
+        public Skeleton(Entity parent,bool Scaled)
         {
             this.parent = parent;
+            IsScaled = Scaled;
             sb = parent.SpriteBatch;
         }
 
         public void ParentBone(string name, AnimatedTexture texture, Rectangle pos, Vector2 pivot, float rotationoffset = 0, Bone parent = null)
         {
-            Bone bone = new Bone(texture,bones.Count,pos,pivot,this,parent);
+            Bone bone = new Bone(texture, bones.Count, pos, pivot, this, parent, IsScaled);
             bones.Add(bone);
             bone.name = name;
         }

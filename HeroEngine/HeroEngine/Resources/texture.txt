@@ -1,0 +1,31 @@
+
+
+//To add a resource (yes modders, over here). Use this syntax:
+//GRASS_NORMAL:Tiles/tile-00
+//Newlines are new files.
+//For the tiles you will be needing to keep the Names the same as the TileLookup Database.
+//TYPE is not too important for modders. (Texture, Sound, Music)
+
+
+//Configure
+TYPE:Texture
+
+//Our Tiles
+BLANK:Tiles/tile-00
+WATER:Tiles/water
+SAND:Tiles/sand
+ROCK:Tiles/rock
+GRASS:Tiles/grass
+
+//Hud
+TORCH:hud\torch
+MINIMAP:hud\minimap
+HPBAR:hud\stat_bars\armour
+ARMOUR:hud\stat_bars\hpbar
+
+//Player
+PLAYER_STAND:npcs\player\manstanding
+PLAYER_WALK:npcs\player\manwalking
+
+//Core
+NOTEX:core\NOTEX

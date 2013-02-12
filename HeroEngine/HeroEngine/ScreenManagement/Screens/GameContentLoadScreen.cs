@@ -29,7 +29,8 @@ namespace HeroEngine.ScreenManagement.Screens
         static ResourceCache<SpriteFont> fonts = new ResourceCache<SpriteFont>();
         static ResourceCache<SoundEffect> sounds = new ResourceCache<SoundEffect>();
         static ResourceCache<Song> music = new ResourceCache<Song>();
-        
+        static bool content_done = false;
+        static bool content_written = false;
         public GameContentLoadScreen(Game game, ScreenManager manager)
             : base(game, manager)
         {
@@ -70,14 +71,18 @@ namespace HeroEngine.ScreenManagement.Screens
             {
                 l_thread.Abort();
             }
-            if (l_thread.ThreadState == ThreadState.Stopped)
+            if (content_done)
             {
-                GameScreen g_screen = new GameScreen(Game,smanager);
                 GameResources.SetManager(loaded_content);
                 GameResources.fonts = fonts;
                 GameResources.music = music;
                 GameResources.sounds = sounds;
                 GameResources.textures = textures;
+                content_written = true;
+            }
+            if (l_thread.ThreadState == ThreadState.Stopped)
+            {
+                GameScreen g_screen = new GameScreen(Game,smanager);
                 smanager.AddScreen(g_screen,this);
                 smanager.RemoveScreen(this);
             }
@@ -118,6 +123,11 @@ namespace HeroEngine.ScreenManagement.Screens
             LoadingFileName = "Loading User Content (if any)";
             OpenResFile<Texture2D>(EngineLimit.CoreResPath_Custom);
 
+            content_done = true;
+            while (!content_written)
+            {
+                Thread.Sleep(1);
+            }
             //Load up the Tiles
             LoadingFileName = "Loading Tiles";
             TileDB.LoadTileData();

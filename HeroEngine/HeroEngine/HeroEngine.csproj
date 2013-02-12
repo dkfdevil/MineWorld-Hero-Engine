@@ -62,9 +62,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
-  <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
-  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="C3.XNA.Primitives2D">
       <HintPath>..\..\..\Acceleration_Demo\Acceleration_Demo\Acceleration_Demo\bin\x86\Debug\C3.XNA.Primitives2D.dll</HintPath>
@@ -122,6 +122,12 @@
     <Compile Include="CoreGame\GameResources.cs" />
     <Compile Include="CoreGame\GameVariables.cs" />
     <Compile Include="CoreGame\ResourceCache.cs" />
+    <Compile Include="Default.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Default.resx</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="LevelEditing\Tile.cs" />
     <Compile Include="Objects\Body\Bone.cs" />
     <Compile Include="Objects\Entity.cs" />
@@ -195,7 +201,6 @@
     <Compile Include="ScreenManagement\Screens\VideoIntroScreen.cs" />
     <Compile Include="Sound\MusicPlayer.cs" />
     <Compile Include="Sound\SoundEffectPlayer.cs" />
-    <Compile Include="UIFramework\Actions.cs" />
     <Compile Include="UIFramework\BackgroundSlideShow.cs" />
     <Compile Include="UIFramework\ClickButtonState.cs" />
     <Compile Include="UIFramework\ClickButton.cs" />
@@ -210,6 +215,12 @@
     <Compile Include="UIFramework\TextArea.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\TileLookup.txt" />
+    <None Include="Resources\texture.txt" />
+    <None Include="Resources\sound.txt" />
+    <None Include="Resources\music.txt" />
+    <None Include="Resources\font.txt" />
+    <None Include="Resources\binding.txt" />
     <None Include="binding.cfg" />
     <None Include="binding360.cfg" />
     <Content Include="Credits.txt">
@@ -217,6 +228,13 @@
     </Content>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
+    <None Include="bin\x86\Debug\cfg\binding.cfg" />
+    <None Include="bin\x86\Debug\reslist\font.res" />
+    <None Include="bin\x86\Debug\reslist\music.res" />
+    <None Include="bin\x86\Debug\reslist\sound.res" />
+    <None Include="bin\x86\Debug\reslist\texture.res" />
+    <None Include="bin\x86\Debug\reslist\textureold.res" />
+    <None Include="bin\x86\Debug\reslist\TileLookup.db" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HeroEngineContent\HeroEngineContent.contentproj">
@@ -251,7 +269,14 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Default.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Default.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

@@ -75,7 +75,8 @@ namespace HeroEngine.AI
         /// <returns></returns>
         public bool GetBindValue(string action)
         {
-            if (Keyboard.GetState().IsKeyDown(bound_key[FindBindIndex(action)]) || GamePad.GetState(plr_index).IsButtonDown(bound_360[FindBindIndex360(action)]))
+            //Keyboard
+            if (Keyboard.GetState().IsKeyDown(bound_key[FindBindIndex(action)]))
             {
                 return true;
             }
@@ -160,7 +161,7 @@ namespace HeroEngine.AI
         /// <param name="file">Full file path to load from.</param>
         public void LoadBinding(string file = "binding")
         {
-            string[] squished = System.IO.File.ReadAllLines(file + ".cfg");
+            string[] squished = System.IO.File.ReadAllLines(Environment.CurrentDirectory + file + ".cfg");
             for (int i = 0; i < squished.Length; i++)
             {
                 int indexofequals = squished[i].IndexOf("=");
