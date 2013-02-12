@@ -46,6 +46,10 @@ Content\sound\music\wierd00.xnb
 Content\sound\music\examplemusic01.xnb
 Content\sound\music\examplemusic02.xnb
 Content\sound\music\examplemusic03.xnb
+Content\Tiles\grass.xnb
+Content\Tiles\rock.xnb
+Content\Tiles\water.xnb
+Content\Tiles\sand.xnb
 Content\intro.wmv
 Content\sound\music\menumusic00.wma
 Content\sound\music\wierd00.wma
@@ -53,3 +57,5 @@ Content\sound\music\examplemusic01.wma
 Content\sound\music\examplemusic02.wma
 Content\sound\music\examplemusic03.wma
 Credits.txt
+Default.resx
+Default.Designer.cs

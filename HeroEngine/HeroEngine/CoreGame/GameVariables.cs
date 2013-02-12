@@ -11,9 +11,10 @@ namespace HeroEngine.CoreGame
     class GameVariables
     {
         //PLAYER
-        public static float PLR_SPEED = 10;
+        public static float PLR_SPEEDX = 10;
+        public static float PLR_SPEEDY = 10;
         public static bool PLR_NOCLIP = false;
-        public static float PLR_LEG_TURN_SPEED = 2f; //0.01 - Very Slow 0.1 - Very Fast
+        public static float PLR_LEG_TURN_SPEED = 4f; //0.01 - Very Slow 0.1 - Very Fast
         public static bool PLR_AUTORELOAD = true;
 
         //SOUND

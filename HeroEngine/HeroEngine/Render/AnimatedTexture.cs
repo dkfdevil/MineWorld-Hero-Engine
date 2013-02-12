@@ -14,7 +14,7 @@ using HeroEngine.LevelEditing;
 using HeroEngine.Render;
 namespace HeroEngine.Render
 {
-    class AnimatedTexture
+    public class AnimatedTexture
     {
         public Texture2D sheet;
         public Rectangle tilesize;

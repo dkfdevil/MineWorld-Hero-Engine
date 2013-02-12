@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using HeroEngine.Render;
+using HeroEngine.CoreGame;
 namespace HeroEngine.LevelEditing
 {
     public class Tile
@@ -10,6 +19,8 @@ namespace HeroEngine.LevelEditing
         public int Id { get; set; }
         public bool CanWalkOn { get; set; }
         public string Type { get; set; }
+        public bool IsAnimated { get; set; }
+        public AnimatedTexture tex = new AnimatedTexture(null,Rectangle.Empty,0,100);
     }
 
     public class TileDB
@@ -66,6 +77,11 @@ namespace HeroEngine.LevelEditing
         private static Tile GetTileData(string[] tiledata)
         {
             Tile tile = new Tile();
+            int width = 0;
+            int height = 0;
+
+            int frames = 0;
+            int speed = 0;
             foreach (string line in tiledata)
             {
                 if (line == "" || line == " " || line == "//")
@@ -76,33 +92,55 @@ namespace HeroEngine.LevelEditing
                 }
                 else
                 {
-                    //Can't do a case, too complicated.
-
-                    //ID Check
-                    if (line.ToLower().Substring(0, 2) == "id")
+                    //--Can't do a case, too complicated.--
+                    //We can, do a 'every-thing-before-=' check
+                    string[] attribute;
+                    try
                     {
-                        tile.Id = int.Parse(line.Substring(3, line.Length - 3));
-                        continue;
+                        attribute = line.Split('=');
+                    }
+                    catch (Exception)
+                    {
+                        
+                        throw new Exception("TileDB File contains an invalid attribute. I couldn't tell where to split :(");
+                    }
+                    attribute[0] = attribute[0].ToLower();
+
+                    switch (attribute[0])
+                    {
+                        case "id":
+                            tile.Id = int.Parse(attribute[1]);
+                            continue;
+
+                        case "type":
+                            tile.Type = attribute[1];
+                            continue;
+
+                        case "canwalkon":
+                            tile.CanWalkOn = bool.Parse(attribute[1]);
+                            continue;
+
+                        case "size":
+                            int xpos = attribute[1].IndexOf('x');
+                            width = int.Parse(attribute[1].Substring(0, xpos));
+                            height = int.Parse(attribute[1].Substring(xpos + 1, attribute[1].Length - xpos - 1));
+                            continue;
+
+                        case "frames":
+                            frames = int.Parse(attribute[1]);
+                            continue;
+
+                        case "speed":
+                            speed = int.Parse(attribute[1]);
+                            continue;
+
+                        default:
+                            break;
                     }
 
-
-                    //Type Check
-                    if (line.ToLower().Substring(0, 4) == "type")
-                    {
-                        tile.Type = line.Substring(5, line.Length - 5);
-                        continue;
-                    }
-
-                    //CanWalkOn Check
-
-                    if (line.ToLower().Substring(0, 9) == "canwalkon")
-                    {
-                        string disection = line.Substring(10, line.Length - 10);
-                        tile.CanWalkOn = bool.Parse(disection);
-                        continue;
-                    }
                 }
             }
+            tile.tex = new AnimatedTexture(GameResources.textures.GetResource(tile.Type), new Rectangle(0, 0, width, height), frames, speed);
             return tile;
         }
 
