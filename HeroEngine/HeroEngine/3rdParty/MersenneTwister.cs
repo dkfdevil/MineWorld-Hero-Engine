@@ -126,7 +126,7 @@ namespace HeroEngine._3rdParty
             return (int)(this.NextDouble() * maxValue);
         }
 
-        public int Next(int minValue, int maxValue)
+        public override int Next(int minValue, int maxValue)
         {
             if (maxValue < minValue)
             {

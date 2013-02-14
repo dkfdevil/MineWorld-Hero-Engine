@@ -16,6 +16,7 @@ using HeroEngine.UIFramework;
 using HeroEngine.Operations;
 using HeroEngine.ScreenManagement.Screens;
 using HeroEngine.Render;
+
 namespace HeroEngine.AI
 {
     class ControlBinding
@@ -166,9 +167,7 @@ namespace HeroEngine.AI
             {
                 int indexofequals = squished[i].IndexOf("=");
                 SetBind(squished[i].Substring(0,indexofequals),(Keys)Enum.Parse(typeof(Keys),squished[i].Substring(indexofequals + 1)));
-                
             }
-
         }
     }
 }

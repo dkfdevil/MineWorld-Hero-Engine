@@ -9,6 +9,7 @@ using System.Diagnostics;
 using HeroEngine.LevelEditing;
 using HeroEngine.Render;
 using HeroEngine.CoreGame;
+
 namespace HeroEngine.Objects
 {
     class Entity

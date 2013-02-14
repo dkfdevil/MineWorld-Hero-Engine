@@ -67,7 +67,7 @@
   <PropertyGroup />
   <ItemGroup>
     <Reference Include="C3.XNA.Primitives2D">
-      <HintPath>Dll\C3.XNA.Primitives2D.dll</HintPath>
+      <HintPath>..\..\Dll\C3.XNA.Primitives2D.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
@@ -221,22 +221,14 @@
     <None Include="Resources\music.txt" />
     <None Include="Resources\font.txt" />
     <None Include="Resources\binding.txt" />
-    <None Include="binding.cfg" />
-    <None Include="binding360.cfg" />
-    <Content Include="Credits.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
-    <None Include="bin\x86\Debug\cfg\binding.cfg" />
-    <None Include="bin\x86\Debug\reslist\font.res" />
-    <None Include="bin\x86\Debug\reslist\music.res" />
-    <None Include="bin\x86\Debug\reslist\sound.res" />
-    <None Include="bin\x86\Debug\reslist\texture.res" />
-    <None Include="bin\x86\Debug\reslist\textureold.res" />
-    <None Include="bin\x86\Debug\reslist\TileLookup.db" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\HeroEngineShared\HeroEngineShared.csproj">
+      <Project>{28A14123-68A4-4D47-9FED-44DF0E40735E}</Project>
+      <Name>HeroEngineShared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HeroEngineContent\HeroEngineContent.contentproj">
       <Name>HeroEngineContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>

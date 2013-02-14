@@ -15,10 +15,10 @@ using HeroEngine.UIFramework;
 using HeroEngine.Operations;
 using HeroEngine.LevelEditing;
 using HeroEngine.ScreenManagement.Screens;
-using HeroEngine.Objects;
 using HeroEngine.CoreGame;
 using HeroEngine.Render;
 using C3;
+
 namespace HeroEngine.Objects
 {
     class ent_blank : Entity

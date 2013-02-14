@@ -21,8 +21,5 @@ namespace HeroEngine.CoreGame
         public static float SND_FX_VOL = 0.5f;
         public static float SND_MUSIC_VOL = 0.5f;
         public static float SND_MASTER_VOL = 1f;
-
-
-
     }
 }

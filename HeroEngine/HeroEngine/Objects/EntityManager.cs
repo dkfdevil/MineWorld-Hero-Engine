@@ -7,6 +7,7 @@ using HeroEngine.ScreenManagement.Screens;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using HeroEngine.LevelEditing;
+
 namespace HeroEngine.Objects
 { 
     /// <summary>

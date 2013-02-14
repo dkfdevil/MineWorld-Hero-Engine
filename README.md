@@ -11,6 +11,7 @@ XNA Studio 4.0
 
 C3 Primitives XNA (Included in the repository)
 
+Lidgren gen3 (Included in the repository)
 
 Original branch:
 ==========

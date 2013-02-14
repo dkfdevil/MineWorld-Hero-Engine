@@ -63,7 +63,7 @@ namespace HeroEngine.ScreenManagement.Screens
                 case 0: //Fade In
                         TimeSpan diff = DateTime.Now - updatetime; //Get the time to update
                         
-                        if(diff.Milliseconds > 9); //Update Me
+                        if(diff.Milliseconds > 9) //Update Me
                         {
                             logoalpha = 255 / (fadedelay / (float)(DateTime.Now - starttime).Seconds);
                             updatetime = DateTime.Now;

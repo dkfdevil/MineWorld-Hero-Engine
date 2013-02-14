@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using HeroEngine._3rdParty;
+
 namespace HeroEngine.LevelEditing
 {
     class LevelGenerator
@@ -253,5 +254,4 @@ namespace HeroEngine.LevelEditing
             return percentdone;
         }
      }
-
 }

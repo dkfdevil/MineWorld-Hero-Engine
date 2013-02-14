@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using HeroEngine.Render;
 using HeroEngine.CoreGame;
+
 namespace HeroEngine.LevelEditing
 {
     public class Tile

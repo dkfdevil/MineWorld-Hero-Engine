@@ -9,11 +9,11 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using C3.XNA;
 using HeroEngine.Operations;
 using HeroEngine.ScreenManagement;
 using HeroEngine.UIFramework.Menus;
-using HeroEngine.Operations;
+using C3;
+
 namespace HeroEngine.UIFramework.Menus.ItemTypes
 {
     class Checkbox : MenuItem

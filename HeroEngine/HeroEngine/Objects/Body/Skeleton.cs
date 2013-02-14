@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using HeroEngine.Render;
+
 namespace HeroEngine.Objects.Body
 {
     class Skeleton
@@ -67,9 +68,7 @@ namespace HeroEngine.Objects.Body
                 }
                 
             }
-
             return null;
         }
-
     }
 }

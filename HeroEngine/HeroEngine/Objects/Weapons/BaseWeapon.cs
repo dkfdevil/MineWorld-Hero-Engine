@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Media;
 using HeroEngine.Objects;
 using HeroEngine.Objects.Weapons.Bullets;
 using HeroEngine.CoreGame;
+
 namespace HeroEngine.Objects.Weapons
 { 
     class BaseWeapon
@@ -77,7 +78,6 @@ namespace HeroEngine.Objects.Weapons
                 CurrentClips--;
                 CurrentAmmo = MaxClipSize;
             }
-
             return true;
         }
     }

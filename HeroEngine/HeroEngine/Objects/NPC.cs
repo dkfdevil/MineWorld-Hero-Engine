@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using HeroEngine.LevelEditing;
 using HeroEngine.Render;
 using HeroEngine.CoreGame;
+
 namespace HeroEngine.Objects
 {
     class NPC : Entity 

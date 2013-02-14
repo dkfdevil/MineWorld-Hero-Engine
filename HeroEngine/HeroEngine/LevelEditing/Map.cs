@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+
 namespace HeroEngine.LevelEditing
 {
     public class Map
@@ -158,5 +159,4 @@ namespace HeroEngine.LevelEditing
             }
         }
     }
-
 }
