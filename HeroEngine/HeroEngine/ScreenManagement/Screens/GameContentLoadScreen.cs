@@ -13,6 +13,8 @@ using System.Threading;
 using System.IO;
 using HeroEngine.CoreGame;
 using HeroEngine.LevelEditing;
+using HeroEngineShared;
+
 namespace HeroEngine.ScreenManagement.Screens
 {
     class GameContentLoadScreen : ScreenComponent
@@ -105,23 +107,27 @@ namespace HeroEngine.ScreenManagement.Screens
             DateTime start = DateTime.Now;
             //Music
             LoadingFileName = "Loading Music";
-            OpenResFile<Song>(EngineLimit.CoreResPath_Music);
+            OpenDataFile<Song>(Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Music);
 
             //Fonts
             LoadingFileName = "Loading Fonts";
-            OpenResFile<SpriteFont>(EngineLimit.CoreResPath_Font);
+            OpenDataFile<SpriteFont>(Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Fonts);
 
             //Textures
             LoadingFileName = "Loading Textures";
-            OpenResFile<Texture2D>(EngineLimit.CoreResPath_Texture);
+            OpenDataFile<Texture2D>(Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Texture);
 
             //Sounds
             LoadingFileName = "Loading Sounds";
-            OpenResFile<Texture2D>(EngineLimit.CoreResPath_Sound);
+            OpenDataFile<Texture2D>(Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Sounds);
+
+            //Tiles
+            LoadingFileName = "Loading Tiles";
+            //OpenDataFile<Texture2D>(Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Tiles);
 
             //Custom
             LoadingFileName = "Loading User Content (if any)";
-            OpenResFile<Texture2D>(EngineLimit.CoreResPath_Custom);
+            //OpenDataFile<Texture2D>(Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Custom);
 
             content_done = true;
             while (!content_written)
@@ -135,14 +141,14 @@ namespace HeroEngine.ScreenManagement.Screens
             System.Diagnostics.Debug.WriteLine("Res load time: " + (DateTime.Now.TimeOfDay.TotalMilliseconds - start.TimeOfDay.TotalMilliseconds));
         }
 
-        private static bool OpenResFile<T>(string path)
+        private static bool OpenDataFile<T>(string path)
         {
             string[] lines; // Lines of res file
-            path = Directory.GetCurrentDirectory() + path;
+            //path = Directory.GetCurrentDirectory() + path;
             try
             {
-                if (!path.Contains(".res")) // Has the user specified the res, i don't mind :)
-                    lines = File.ReadAllLines(path + ".res"); //Add one on
+                if (!path.Contains(Constants.HeroEngine_Data_Extension)) // Has the user specified the res, i don't mind :)
+                    lines = File.ReadAllLines(Directory.GetCurrentDirectory() + path + Constants.HeroEngine_Data_Extension); //Add one on
                 else
                     lines = File.ReadAllLines(path); //Leave it
             }
@@ -185,16 +191,16 @@ namespace HeroEngine.ScreenManagement.Screens
                     case "font":
                         fonts.AddResource(loaded_content.Load<SpriteFont>(itempath), name);
                         break;
+                    default:
+                        {
+                            //Trying to load a content type that isnt supported (YET!)
+                            break;
+                        }
                 }
             }
 
             System.Diagnostics.Debug.Print("Loaded a Resource Cache");
             return true; //Return our cache. We are done. Phew.
-
-
-
-
         }
-    
     }
 }

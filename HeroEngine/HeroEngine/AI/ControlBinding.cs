@@ -16,6 +16,8 @@ using HeroEngine.UIFramework;
 using HeroEngine.Operations;
 using HeroEngine.ScreenManagement.Screens;
 using HeroEngine.Render;
+using HeroEngineShared;
+using System.IO;
 
 namespace HeroEngine.AI
 {
@@ -145,24 +147,24 @@ namespace HeroEngine.AI
         /// Save the current control binding to file.
         /// </summary>
         /// <param name="file">Full file path to save to.</param>
-        public void SaveBinding(string file = "binding")
+        public void SaveBinding(string filepath)
         {
             string[] squished = new string[actions.Count];
             for (int i = 0; i < actions.Count; i++)
             {
                 squished[i] = actions[i] + "=" + bound_key[i].ToString();
             }
-            System.IO.File.Delete(file + ".cfg");
-            System.IO.File.CreateText(file + ".cfg");
+            System.IO.File.Delete(Directory.GetCurrentDirectory() + filepath + Constants.HeroEngine_Config_Extension);
+            System.IO.File.CreateText(Directory.GetCurrentDirectory() + filepath + Constants.HeroEngine_Config_Extension);
         }
 
         /// <summary>
         /// Loads a control binding to this class.
         /// </summary>
         /// <param name="file">Full file path to load from.</param>
-        public void LoadBinding(string file = "binding")
+        public void LoadBinding(string filepath)
         {
-            string[] squished = System.IO.File.ReadAllLines(Environment.CurrentDirectory + file + ".cfg");
+            string[] squished = System.IO.File.ReadAllLines(Directory.GetCurrentDirectory() + filepath + Constants.HeroEngine_Config_Extension);
             for (int i = 0; i < squished.Length; i++)
             {
                 int indexofequals = squished[i].IndexOf("=");

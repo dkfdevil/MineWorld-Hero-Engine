@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using HeroEngine.Render;
 using HeroEngine.CoreGame;
+using HeroEngineShared;
 
 namespace HeroEngine.LevelEditing
 {
@@ -36,7 +37,7 @@ namespace HeroEngine.LevelEditing
 
             try 
 	        {
-                tile_data = File.ReadAllLines(Directory.GetCurrentDirectory() + EngineLimit.TileDBFileName); //Get the data.
+                tile_data = File.ReadAllLines(Directory.GetCurrentDirectory() + Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Tiles + Constants.HeroEngine_Data_Extension); //Get the data.
 	        }
 	        catch (FileNotFoundException)
 	        {

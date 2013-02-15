@@ -25,10 +25,15 @@ namespace HeroEngine
         GraphicsDeviceManager graphics;
         //Standard Variable
         ScreenManagement.ScreenManager sman;
-        public MainGame()
+
+        //Parameters
+        string[] parameters;
+        public MainGame(string[] args)
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            parameters = args;
         }
 
         protected override void Initialize()

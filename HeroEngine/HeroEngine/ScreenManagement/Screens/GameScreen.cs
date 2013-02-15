@@ -17,6 +17,7 @@ using HeroEngine.AI;
 using HeroEngine.CoreGame;
 using System.IO;
 using HeroEngine.Objects;
+using HeroEngineShared;
 namespace HeroEngine.ScreenManagement.Screens
 {
     class GameScreen : ScreenComponent
@@ -68,7 +69,7 @@ namespace HeroEngine.ScreenManagement.Screens
 			  music[i] = (Song)GameResources.music.GetResourceByIndex(i); names[i] = music[i].Name + " - " + music[0].Artist;
 			}
             mplayer = new MusicPlayer(music, names); //Create the music player.
-            bind.LoadBinding(EngineLimit.BindFileName); //Get the bind for the player.
+            bind.LoadBinding(Constants.HeroEngine_Folder_Config + Constants.HeroEngine_Config_Binding); //Get the bind for the player.
 
             //Create the player, adds him into dat EntityManager Later on.
 

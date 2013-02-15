@@ -121,19 +121,22 @@
   <data name="binding" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\binding.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="font" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\font.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="fonts" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\fonts.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="music" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\music.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="sound" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\sound.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="sounds" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\sounds.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="texture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\texture.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="TileLookup" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\TileLookup.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="tiles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\tiles.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="custom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\custom.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

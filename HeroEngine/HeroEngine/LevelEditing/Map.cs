@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using HeroEngineShared;
 
 namespace HeroEngine.LevelEditing
 {
@@ -15,7 +16,7 @@ namespace HeroEngine.LevelEditing
         public Tile[,] objects = new Tile[EngineLimit.TotalMapAreaHeight, EngineLimit.TotalMapAreaHeight];
         public Tile[,] upper_objects = new Tile[EngineLimit.TotalMapAreaHeight, EngineLimit.TotalMapAreaHeight];
 
-        public string[] tile_types = File.ReadAllLines(Directory.GetCurrentDirectory() + EngineLimit.TileDBFileName); 
+        public string[] tile_types = File.ReadAllLines(Directory.GetCurrentDirectory() + Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Tiles + Constants.HeroEngine_Data_Extension); 
         public TileMarker local_player_position;
         DateTime lastupdate = new DateTime(2000,1,01);
         public Map(string Name, DateTime time, Tile[,] Ground, Tile[,] Flora, Tile[,] Objects, Tile[,] Upper_objects, TileMarker lpp)

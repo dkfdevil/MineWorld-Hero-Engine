@@ -122,12 +122,6 @@
     <Compile Include="CoreGame\GameResources.cs" />
     <Compile Include="CoreGame\GameVariables.cs" />
     <Compile Include="CoreGame\ResourceCache.cs" />
-    <Compile Include="Default.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Default.resx</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="LevelEditing\Tile.cs" />
     <Compile Include="Objects\Body\Bone.cs" />
     <Compile Include="Objects\Entity.cs" />
@@ -138,7 +132,6 @@
     <Compile Include="Objects\Body\Skeleton.cs" />
     <Compile Include="Objects\Weapons\BaseWeapon.cs" />
     <Compile Include="CoreGame\Scene2DNode.cs" />
-    <Compile Include="GameStates.cs" />
     <Compile Include="GameState\GameState.cs" />
     <Compile Include="LevelEditing\LevelGenerator.cs" />
     <Compile Include="LevelEditing\Map.cs" />
@@ -160,16 +153,21 @@
     <Compile Include="Operations\RectangleOperations.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Operations\Screen\Cursor.cs">
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ScreenManagement\Screen\Cursor.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Operations\Screen\IntroMovie.cs">
+    <Compile Include="ScreenManagement\Screen\IntroMovie.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Operations\Screen\Menu.cs">
+    <Compile Include="ScreenManagement\Screen\Menu.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Operations\Screen\Overlay.cs">
+    <Compile Include="ScreenManagement\Screen\Overlay.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Operations\Toggle.cs">
@@ -215,14 +213,15 @@
     <Compile Include="UIFramework\TextArea.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TileLookup.txt" />
-    <None Include="Resources\texture.txt" />
-    <None Include="Resources\sound.txt" />
-    <None Include="Resources\music.txt" />
-    <None Include="Resources\font.txt" />
-    <None Include="Resources\binding.txt" />
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
+    <Content Include="Resources\binding.txt" />
+    <Content Include="Resources\custom.txt" />
+    <Content Include="Resources\fonts.txt" />
+    <Content Include="Resources\music.txt" />
+    <Content Include="Resources\sounds.txt" />
+    <Content Include="Resources\texture.txt" />
+    <Content Include="Resources\tiles.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\HeroEngineShared\HeroEngineShared.csproj">
@@ -262,13 +261,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Default.resx">
+    <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Default.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

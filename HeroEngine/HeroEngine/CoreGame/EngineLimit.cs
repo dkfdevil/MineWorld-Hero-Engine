@@ -28,15 +28,6 @@ namespace HeroEngine
         public const int MinBeachCoast = 5;
         public const int MaxBeachCoast = 10;
 
-        public const string CoreResPath_Texture = "/reslist/texture";
-        public const string CoreResPath_Sound = "/reslist/sound";
-        public const string CoreResPath_Music = "/reslist/music";
-        public const string CoreResPath_Font = "/reslist/font";
-        public const string CoreResPath_Custom = "/reslist/custom";
-
-        public const string TileDBFileName = "/reslist/TileLookup.db";
-        public const string BindFileName = "/cfg/binding";
-
         public static float TileScaleX = 0;
         public static float TileScaleY = 0;
 
