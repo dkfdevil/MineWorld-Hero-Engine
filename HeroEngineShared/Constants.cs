@@ -26,11 +26,14 @@ namespace HeroEngineShared
         public static string HeroEngine_Data_Texture = "/texture";
         public static string HeroEngine_Data_Tiles = "/tiles";
         public static string HeroEngine_Data_Custom = "/custom";
+        public static string HeroEngine_Data_Videos = "/videos";
 
         public static string HeroEngine_Config_Binding = "/binding";
 
         // HeroEngineData = hed
         public static string HeroEngine_Data_Extension = ".hed";
         public static string HeroEngine_Config_Extension = ".txt";
+
+        public static uint MersenneTwister_Seed = 3245;
     }
 }

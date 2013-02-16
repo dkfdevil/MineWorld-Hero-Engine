@@ -12,6 +12,7 @@ namespace HeroEngine
         /// </summary>
         static void Main(string[] args)
         {
+            //Check for the files otherwise the game wont run
             CheckForRequiredFiles();
             using (MainGame game = new MainGame(args))
             {

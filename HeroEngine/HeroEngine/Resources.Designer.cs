@@ -227,5 +227,19 @@ namespace HeroEngine {
                 return ResourceManager.GetString("tiles", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to //To add a resource (yes modders, over here). Use this syntax:
+        /////GRASS_NORMAL:Tiles/tile-00
+        /////Newlines are new files.
+        /////TYPE is not too important for modders. (Texture, Sound, Music)
+        ///TYPE:Music
+        ///INTROVIDEO:videos\intro.
+        /// </summary>
+        internal static string videos {
+            get {
+                return ResourceManager.GetString("videos", resourceCulture);
+            }
+        }
     }
 }

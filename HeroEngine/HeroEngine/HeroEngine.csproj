@@ -69,6 +69,9 @@
     <Reference Include="C3.XNA.Primitives2D">
       <HintPath>..\..\Dll\C3.XNA.Primitives2D.dll</HintPath>
     </Reference>
+    <Reference Include="EasyConfig">
+      <HintPath>..\..\Dll\EasyConfig.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -116,101 +119,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="3rdParty\MersenneTwister.cs" />
-    <Compile Include="AI\ControlBinding.cs" />
-    <Compile Include="CoreGame\EngineLimit.cs" />
-    <Compile Include="CoreGame\GameResources.cs" />
-    <Compile Include="CoreGame\GameVariables.cs" />
-    <Compile Include="CoreGame\ResourceCache.cs" />
-    <Compile Include="LevelEditing\Tile.cs" />
-    <Compile Include="Objects\Body\Bone.cs" />
-    <Compile Include="Objects\Entity.cs" />
-    <Compile Include="Objects\EntityManager.cs" />
-    <Compile Include="Objects\ent_blank.cs" />
-    <Compile Include="Objects\NPC.cs" />
-    <Compile Include="Objects\Player.cs" />
-    <Compile Include="Objects\Body\Skeleton.cs" />
-    <Compile Include="Objects\Weapons\BaseWeapon.cs" />
-    <Compile Include="CoreGame\Scene2DNode.cs" />
-    <Compile Include="GameState\GameState.cs" />
-    <Compile Include="LevelEditing\LevelGenerator.cs" />
-    <Compile Include="LevelEditing\Map.cs" />
-    <Compile Include="LevelEditing\TileMarker.cs" />
-    <Compile Include="LevelEditing\TileOperations.cs" />
-    <Compile Include="Objects\Weapons\Bullets\BaseBullet.cs" />
-    <Compile Include="Operations\ArrayFunc.cs" />
-    <Compile Include="Operations\Directions.cs" />
-    <Compile Include="Operations\Frames.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Operations\KeyCheck.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Operations\Misc.cs" />
-    <Compile Include="Operations\MouseInputManager.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Operations\RectangleOperations.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="GameStates\GameStates\MainGameState.cs" />
+    <Compile Include="GameStates\GameStates\IntroState.cs" />
+    <Compile Include="GameStates\GameStates\LoadingState.cs" />
+    <Compile Include="GameStates\GameStates\MainMenuState.cs" />
+    <Compile Include="GameStates\GameStates\OptionsState.cs" />
+    <Compile Include="Resources\GameResources.cs" />
+    <Compile Include="Resources\ResourceCache.cs" />
+    <Compile Include="GameStates\GameStateManager.cs" />
+    <Compile Include="GameStates\GameStates\BaseState.cs" />
+    <Compile Include="GameStates\State.cs" />
+    <Compile Include="Input\ClientKeys.cs" />
+    <Compile Include="Input\InputManager.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ScreenManagement\Screen\Cursor.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ScreenManagement\Screen\IntroMovie.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ScreenManagement\Screen\Menu.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ScreenManagement\Screen\Overlay.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Operations\Toggle.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MainGame.cs" />
-    <Compile Include="Render\AnimatedTexture.cs" />
-    <Compile Include="Render\Camera.cs" />
-    <Compile Include="Render\Console.cs" />
-    <Compile Include="Render\Debug.cs" />
-    <Compile Include="Render\HUD.cs" />
-    <Compile Include="Render\Lighting.cs" />
-    <Compile Include="Render\RectangleRenderItem.cs" />
-    <Compile Include="Render\Resolution.cs" />
-    <Compile Include="Render\TileRenderer.cs" />
-    <Compile Include="ScreenManagement\ScreenComponent.cs" />
-    <Compile Include="ScreenManagement\ScreenManager.cs" />
-    <Compile Include="ScreenManagement\ScreenState.cs" />
-    <Compile Include="ScreenManagement\Screens\CreditsScreen.cs" />
-    <Compile Include="ScreenManagement\Screens\DevelopmentScreen.cs" />
-    <Compile Include="ScreenManagement\Screens\ExitScreen.cs" />
-    <Compile Include="ScreenManagement\Screens\GameContentLoadScreen.cs" />
-    <Compile Include="ScreenManagement\Screens\GameScreen.cs" />
-    <Compile Include="ScreenManagement\Screens\LevelGeneratorScreen.cs" />
-    <Compile Include="ScreenManagement\Screens\MenuScreen.cs" />
-    <Compile Include="ScreenManagement\Screens\TestScreen.cs" />
-    <Compile Include="ScreenManagement\Screens\VideoIntroScreen.cs" />
-    <Compile Include="Sound\MusicPlayer.cs" />
-    <Compile Include="Sound\SoundEffectPlayer.cs" />
-    <Compile Include="UIFramework\BackgroundSlideShow.cs" />
-    <Compile Include="UIFramework\ClickButtonState.cs" />
-    <Compile Include="UIFramework\ClickButton.cs" />
-    <Compile Include="UIFramework\DialogBox.cs" />
-    <Compile Include="UIFramework\GetKeyboardText.cs" />
-    <Compile Include="UIFramework\Menus\ItemTypes\Button.cs" />
-    <Compile Include="UIFramework\Menus\ItemTypes\Checkbox.cs" />
-    <Compile Include="UIFramework\Menus\ItemTypes\Dropdown.cs" />
-    <Compile Include="UIFramework\Menus\MenuItem.cs" />
-    <Compile Include="UIFramework\Menus\MenuManager.cs" />
-    <Compile Include="UIFramework\Menus\SubMenu.cs" />
-    <Compile Include="UIFramework\TextArea.cs" />
+    <Compile Include="Render\ResolutionMonitorManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
@@ -222,6 +151,7 @@
     <Content Include="Resources\sounds.txt" />
     <Content Include="Resources\texture.txt" />
     <Content Include="Resources\tiles.txt" />
+    <None Include="Resources\videos.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\HeroEngineShared\HeroEngineShared.csproj">

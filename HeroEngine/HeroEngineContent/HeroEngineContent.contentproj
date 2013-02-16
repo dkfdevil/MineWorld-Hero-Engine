@@ -57,8 +57,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="intro.wmv">
-      <Name>intro</Name>
+    <Compile Include="videos\intromovie.wmv">
+      <Name>intromovie</Name>
       <Importer>WmvImporter</Importer>
       <Processor>VideoProcessor</Processor>
     </Compile>

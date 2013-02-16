@@ -9,12 +9,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Threading;
-using HeroEngine.Screen;
 using HeroEngine.CoreGame;
-using HeroEngine.UIFramework;
-using HeroEngine.Operations;
-using HeroEngine.ScreenManagement.Screens;
 using HeroEngine.Render;
+using HeroEngine.GameStates;
 namespace HeroEngine
 {
     /// <summary>
@@ -24,7 +21,7 @@ namespace HeroEngine
     {
         GraphicsDeviceManager graphics;
         //Standard Variable
-        ScreenManagement.ScreenManager sman;
+        GameStateManager manager;
 
         //Parameters
         string[] parameters;
@@ -38,37 +35,31 @@ namespace HeroEngine
 
         protected override void Initialize()
         {
-            Resolution.Init(ref graphics);
-            Resolution.SetVirtualResolution(this.GraphicsDevice.Adapter.CurrentDisplayMode.Width / 2, this.GraphicsDevice.Adapter.CurrentDisplayMode.Height / 2);
-            Resolution.SetResolution(this.GraphicsDevice.Adapter.CurrentDisplayMode.Width / 2, this.GraphicsDevice.Adapter.CurrentDisplayMode.Height / 2, false);
-            
-            sman = new ScreenManagement.ScreenManager(this);
-            Components.Add(sman);
-            VideoIntroScreen vis;
-            vis = new VideoIntroScreen(this, sman);
-            sman.AddScreen(vis);
-            graphics.ApplyChanges();
-            
+            manager = new GameStateManager(graphics, Content, this);
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
+            manager.LoadContent();
             base.LoadContent();
         }
 
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
             base.UnloadContent();
+        }
+
+        protected override void Update(GameTime gameTime)
+        {
+            manager.Update(gameTime);
+            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            Resolution.BeginDraw();
-            sman.gametime = gameTime;
+            manager.Draw(gameTime);
             base.Draw(gameTime);
         }
-
     }
 }
