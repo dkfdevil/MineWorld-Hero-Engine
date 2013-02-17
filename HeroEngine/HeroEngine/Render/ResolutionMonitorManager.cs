@@ -18,22 +18,23 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace HeroEngine.Render
 {
+    //TODO Cleanup and redo this class RESOLUTIONMANAGER
     public class ResolutionMonitorManager
     {
         private GraphicsDeviceManager _Device = null;
 
-        public int _Width = 800;
-        public int _Height = 600;
-        public int _VWidth = 1024;
-        public int _VHeight = 768;
+        public int Width = 800;
+        public int Height = 600;
+        public bool FullScreen = false;
+        private int _VWidth = 1024;
+        private int _VHeight = 768;
         private Matrix _ScaleMatrix;
-        private bool _FullScreen = false;
         private bool _dirtyMatrix = true;
 
         public void Init(ref GraphicsDeviceManager device)
         {
-            _Width = device.PreferredBackBufferWidth;
-            _Height = device.PreferredBackBufferHeight;
+            Width = device.PreferredBackBufferWidth;
+            Height = device.PreferredBackBufferHeight;
             _Device = device;
             _dirtyMatrix = true;
             ApplyResolutionSettings();
@@ -49,10 +50,10 @@ namespace HeroEngine.Render
 
         public void SetResolution(int Width, int Height, bool FullScreen)
         {
-            _Width = Width;
-            _Height = Height;
+            this.Width = Width;
+            this.Height = Height;
 
-            _FullScreen = FullScreen;
+            FullScreen = FullScreen;
 
            ApplyResolutionSettings();
         }
@@ -65,51 +66,46 @@ namespace HeroEngine.Render
             _dirtyMatrix = true;
         }
 
-        private void ApplyResolutionSettings()
-       {
+        public void ApplyResolutionSettings()
+        {
+            // If we aren't using a full screen mode, the height and width of the window can
+            // be set to anything equal to or smaller than the actual screen size.
+            if (FullScreen == false)
+            {
+                if ((Width <= GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width)
+                    && (Height <= GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height))
+                {
+                    _Device.PreferredBackBufferWidth = Width;
+                    _Device.PreferredBackBufferHeight = Height;
+                    _Device.IsFullScreen = FullScreen;
+                    _Device.ApplyChanges();
+                }
+            }
+            else
+            {
+                // If we are using full screen mode, we should check to make sure that the display
+                // adapter can handle the video mode we are trying to set.  To do this, we will
+                // iterate through the display modes supported by the adapter and check them against
+                // the mode we want to set.
+                foreach (DisplayMode dm in GraphicsAdapter.DefaultAdapter.SupportedDisplayModes)
+                {
+                    // Check the width and height of each mode against the passed values
+                    if ((dm.Width == Width) && (dm.Height == Height))
+                    {
+                        // The mode is supported, so set the buffer formats, apply changes and return
+                        _Device.PreferredBackBufferWidth = Width;
+                        _Device.PreferredBackBufferHeight = Height;
+                        _Device.IsFullScreen = FullScreen;
+                        _Device.ApplyChanges();
+                    }
+                }
+            }
 
-#if XBOX360
-           _FullScreen = true;
-#endif
+            _dirtyMatrix = true;
 
-           // If we aren't using a full screen mode, the height and width of the window can
-           // be set to anything equal to or smaller than the actual screen size.
-           if (_FullScreen == false)
-           {
-               if ((_Width <= GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width)
-                   && (_Height <= GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height))
-               {
-                   _Device.PreferredBackBufferWidth = _Width;
-                   _Device.PreferredBackBufferHeight = _Height;
-                   _Device.IsFullScreen = _FullScreen;
-                   _Device.ApplyChanges();
-               }
-           }
-           else
-           {
-               // If we are using full screen mode, we should check to make sure that the display
-               // adapter can handle the video mode we are trying to set.  To do this, we will
-               // iterate through the display modes supported by the adapter and check them against
-               // the mode we want to set.
-               foreach (DisplayMode dm in GraphicsAdapter.DefaultAdapter.SupportedDisplayModes)
-               {
-                   // Check the width and height of each mode against the passed values
-                   if ((dm.Width == _Width) && (dm.Height == _Height))
-                   {
-                       // The mode is supported, so set the buffer formats, apply changes and return
-                       _Device.PreferredBackBufferWidth = _Width;
-                       _Device.PreferredBackBufferHeight = _Height;
-                       _Device.IsFullScreen = _FullScreen;
-                       _Device.ApplyChanges();
-                   }
-               }
-           }
-
-           _dirtyMatrix = true;
-
-           _Width =   _Device.PreferredBackBufferWidth;
-           _Height = _Device.PreferredBackBufferHeight;
-       }
+            Width = _Device.PreferredBackBufferWidth;
+            Height = _Device.PreferredBackBufferHeight;
+        }
 
         /// <summary>
         /// Sets the device to use the draw pump
@@ -143,8 +139,8 @@ namespace HeroEngine.Render
         {
             Viewport vp = new Viewport();
             vp.X = vp.Y = 0;
-            vp.Width = _Width;
-            vp.Height = _Height;
+            vp.Width = Width;
+            vp.Height = Height;
             _Device.GraphicsDevice.Viewport = vp;
         }
 

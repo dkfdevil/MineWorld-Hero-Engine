@@ -132,18 +132,18 @@ namespace HeroEngine.GameStates
             //game.Window.AllowUserResizing = true;
             //Game.Window.ClientSizeChanged += WindowClientSizeChanged;
 
-            Graphics.PreferredBackBufferHeight = Configfile.SettingGroups["Video"].Settings["Height"].GetValueAsInt();
-            Graphics.PreferredBackBufferWidth = Configfile.SettingGroups["Video"].Settings["Width"].GetValueAsInt();
-            Graphics.IsFullScreen = Configfile.SettingGroups["Video"].Settings["Fullscreen"].GetValueAsBool();
+            ResolutionManager.Height = Configfile.SettingGroups["Video"].Settings["Height"].GetValueAsInt();
+            ResolutionManager.Width = Configfile.SettingGroups["Video"].Settings["Width"].GetValueAsInt();
+            ResolutionManager.FullScreen = Configfile.SettingGroups["Video"].Settings["Fullscreen"].GetValueAsBool();
 
-            Graphics.ApplyChanges();
+            ResolutionManager.ApplyResolutionSettings();
         }
 
         public void SaveSettings()
         {
-            Configfile.SettingGroups["Video"].Settings["Height"].SetValue(Graphics.PreferredBackBufferHeight);
-            Configfile.SettingGroups["Video"].Settings["Width"].SetValue(Graphics.PreferredBackBufferWidth);
-            Configfile.SettingGroups["Video"].Settings["Fullscreen"].SetValue(Graphics.IsFullScreen);
+            Configfile.SettingGroups["Video"].Settings["Height"].SetValue(ResolutionManager.Height);
+            Configfile.SettingGroups["Video"].Settings["Width"].SetValue(ResolutionManager.Width);
+            Configfile.SettingGroups["Video"].Settings["Fullscreen"].SetValue(ResolutionManager.FullScreen);
 
             Configfile.Save(Directory.GetCurrentDirectory() + Constants.HeroEngine_Folder_Config + Constants.HeroEngine_Config_Settings + Constants.HeroEngine_Config_Extension);
         }
