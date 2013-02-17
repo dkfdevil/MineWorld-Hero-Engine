@@ -40,6 +40,7 @@ namespace HeroEngine.CoreGame
             fonts = new ResourceCache<SpriteFont>(manager);
             sounds = new ResourceCache<SoundEffect>(manager);
             music = new ResourceCache<Song>(manager);
+            videos = new ResourceCache<Video>(manager);
         }
 
         public void AddResource(string type,string filepath,string name)
@@ -73,7 +74,7 @@ namespace HeroEngine.CoreGame
                     }
                 case "videos":
                     {
-                        videos.AddResource(manager.Load<Video>(filepath + "/" + name + ".wmv"), name);
+                        videos.AddResource(manager.Load<Video>(filepath), name);
                         break;
                     }
                 default:

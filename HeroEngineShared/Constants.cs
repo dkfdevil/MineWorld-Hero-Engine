@@ -13,8 +13,8 @@ namespace HeroEngineShared
         static string C3XNA_Version = "C3 Xna Primitives REV 12";
 
         public static string HeroEngine_Version = "HeroEngine DEV Build 001";
-        public static string HeroEngineShared = "HeroEngineShared DEV Build 001";
-        public static string HeroEngineServer = "HeroEngineServer DEV Build 001";
+        public static string HeroEngineShared_Version = "HeroEngineShared DEV Build 001";
+        public static string HeroEngineServer_Version = "HeroEngineServer DEV Build 001";
 
         public static string HeroEngine_Folder_Data = "/data";
         public static string HeroEngine_Folder_Config = "/config";
@@ -29,6 +29,7 @@ namespace HeroEngineShared
         public static string HeroEngine_Data_Videos = "/videos";
 
         public static string HeroEngine_Config_Binding = "/binding";
+        public static string HeroEngine_Config_Settings = "/settings";
 
         // HeroEngineData = hed
         public static string HeroEngine_Data_Extension = ".hed";

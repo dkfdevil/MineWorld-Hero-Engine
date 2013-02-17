@@ -1,7 +1,1 @@
-MOVELEFT=A
-MOVERIGHT=D
-MOVEUP=W
-MOVEDOWN=S
-MENU=M
-TORCH=F
-PAUSE=Escape
+//Needs to be redone

@@ -12,6 +12,7 @@ using HeroEngine.Render;
 using HeroEngine.GameStates.GameStates;
 using HeroEngineShared;
 using System.IO;
+using EasyConfig;
 
 namespace HeroEngine.GameStates
 {
@@ -20,20 +21,23 @@ namespace HeroEngine.GameStates
         //This class is the masterclass
         //This class holds all the tools for the different screen to function even the game state
         public GraphicsDeviceManager Graphics;
-        public SpriteBatch SpriteBatch;
         public GraphicsDevice Device;
+        public SpriteBatch SpriteBatch;
         public ResolutionMonitorManager ResolutionManager;
 
         //Need to add more media here like the music player and the soundeffectplayer
         //TODO
         public VideoPlayer VideoPlayer;
 
+        //Resources part
         public MainGame game;
-        public GameResources GameResources;
-
-        private readonly InputHelper _inputhelper;
-
         public ContentManager Conmanager;
+        public GameResources GameResources;
+        public ConfigFile Configfile;
+
+        //Input part
+        private readonly InputHelper _inputhelper;
+        public ControlBinding Controlbinding;
 
         private readonly BaseState[] _screens;
 
@@ -44,21 +48,29 @@ namespace HeroEngine.GameStates
             //Check for the files otherwise the game wont run
             CheckForRequiredFiles();
 
-            _inputhelper = new InputHelper();
-            game = gam;
-            Conmanager = cman;
             Graphics = man;
             Device = Graphics.GraphicsDevice;
             SpriteBatch = new SpriteBatch(Device);
-            VideoPlayer = new VideoPlayer();
-            GameResources = new GameResources(Conmanager);
             ResolutionManager = new ResolutionMonitorManager();
             ResolutionManager.Init(ref Graphics);
+
+            VideoPlayer = new VideoPlayer();
+
+            game = gam;
+            Conmanager = cman;
+            GameResources = new GameResources(Conmanager);
+            Configfile = new ConfigFile(Directory.GetCurrentDirectory() + Constants.HeroEngine_Folder_Config + Constants.HeroEngine_Config_Settings + Constants.HeroEngine_Config_Extension);
+
+            _inputhelper = new InputHelper();
+            Controlbinding = new ControlBinding();
 
             _screens = new BaseState[]
                            {
                                new IntroState(this,State.GameState.IntroState)
                            };
+
+            //Load the settings file
+            LoadSettings();
 
             //Set initial state in the manager itself
             SwitchState(State.GameState.IntroState);
@@ -114,11 +126,33 @@ namespace HeroEngine.GameStates
             _curScreen.Draw(gameTime,Device,SpriteBatch);
         }
 
-        void WindowClientSizeChanged(object sender, EventArgs e)
+        public void LoadSettings()
         {
-            Graphics.PreferredBackBufferWidth = game.Window.ClientBounds.Width;
-            Graphics.PreferredBackBufferHeight = game.Window.ClientBounds.Height;
+            game.Window.Title = Constants.HeroEngine_Version;
+            //game.Window.AllowUserResizing = true;
+            //Game.Window.ClientSizeChanged += WindowClientSizeChanged;
+
+            Graphics.PreferredBackBufferHeight = Configfile.SettingGroups["Video"].Settings["Height"].GetValueAsInt();
+            Graphics.PreferredBackBufferWidth = Configfile.SettingGroups["Video"].Settings["Width"].GetValueAsInt();
+            Graphics.IsFullScreen = Configfile.SettingGroups["Video"].Settings["Fullscreen"].GetValueAsBool();
+
+            Graphics.ApplyChanges();
         }
+
+        public void SaveSettings()
+        {
+            Configfile.SettingGroups["Video"].Settings["Height"].SetValue(Graphics.PreferredBackBufferHeight);
+            Configfile.SettingGroups["Video"].Settings["Width"].SetValue(Graphics.PreferredBackBufferWidth);
+            Configfile.SettingGroups["Video"].Settings["Fullscreen"].SetValue(Graphics.IsFullScreen);
+
+            Configfile.Save(Directory.GetCurrentDirectory() + Constants.HeroEngine_Folder_Config + Constants.HeroEngine_Config_Settings + Constants.HeroEngine_Config_Extension);
+        }
+
+        //void WindowClientSizeChanged(object sender, EventArgs e)
+        //{
+        //    Graphics.PreferredBackBufferWidth = game.Window.ClientBounds.Width;
+        //    Graphics.PreferredBackBufferHeight = game.Window.ClientBounds.Height;
+        //}
 
         static void CheckForRequiredFiles()
         {
@@ -147,13 +181,14 @@ namespace HeroEngine.GameStates
         static void CheckFiles()
         {
             //If the files dont exsist let it create default ones
-            string[] files = new string[6];
+            string[] files = new string[7];
             files[0] = Constants.HeroEngine_Folder_Config + Constants.HeroEngine_Config_Binding + Constants.HeroEngine_Config_Extension;
-            files[1] = Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Fonts + Constants.HeroEngine_Data_Extension;
-            files[2] = Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Music + Constants.HeroEngine_Data_Extension;
-            files[3] = Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Sounds + Constants.HeroEngine_Data_Extension;
-            files[4] = Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Texture + Constants.HeroEngine_Data_Extension;
-            files[5] = Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Tiles + Constants.HeroEngine_Data_Extension;
+            files[1] = Constants.HeroEngine_Folder_Config + Constants.HeroEngine_Config_Settings + Constants.HeroEngine_Config_Extension;
+            files[2] = Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Fonts + Constants.HeroEngine_Data_Extension;
+            files[3] = Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Music + Constants.HeroEngine_Data_Extension;
+            files[4] = Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Sounds + Constants.HeroEngine_Data_Extension;
+            files[5] = Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Texture + Constants.HeroEngine_Data_Extension;
+            files[6] = Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Tiles + Constants.HeroEngine_Data_Extension;
 
             foreach (string file in files)
             {

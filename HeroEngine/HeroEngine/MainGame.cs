@@ -17,7 +17,7 @@ namespace HeroEngine
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class MainGame : Microsoft.Xna.Framework.Game
+    public class  MainGame : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         //Standard Variable

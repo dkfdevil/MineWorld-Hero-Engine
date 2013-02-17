@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace HeroEngine
 {
-#if WINDOWS || XBOX
+#if WINDOWS
     static class Program
     {
         /// <summary>

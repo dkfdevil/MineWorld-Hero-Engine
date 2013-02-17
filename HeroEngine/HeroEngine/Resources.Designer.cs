@@ -124,6 +124,15 @@ namespace HeroEngine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string settings {
+            get {
+                return ResourceManager.GetString("settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to //To add a resource (yes modders, over here). Use this syntax:
         /////GRASS_NORMAL:Tiles/tile-00
         /////Newlines are new files.

@@ -32,7 +32,7 @@ namespace HeroEngine.GameStates.GameStates
         {
             //HACKY
             resourcemanager = manager;
-            manager.AddResource("videos", Directory.GetCurrentDirectory() + Constants.HeroEngine_Folder_Data + Constants.HeroEngine_Data_Videos,"intromovie");
+            manager.AddResource("videos", "videos/intromovie","intromovie");
             _gamemanager.game.IsMouseVisible = false;
             _size.Width = _gamemanager.Graphics.PreferredBackBufferWidth;
             _size.Height = _gamemanager.Graphics.PreferredBackBufferHeight;
@@ -47,7 +47,7 @@ namespace HeroEngine.GameStates.GameStates
         {
             if (!_introstarted)
             {
-                _gamemanager.VideoPlayer.Play((Video)resourcemanager.GetResource("video", "intromovie"));
+                _gamemanager.VideoPlayer.Play((Video)resourcemanager.GetResource("videos", "intromovie"));
                 _introstarted = true;
             }
             if (_gamemanager.VideoPlayer.State == MediaState.Stopped)

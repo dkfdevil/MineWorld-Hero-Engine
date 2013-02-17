@@ -125,6 +125,7 @@
     <Compile Include="GameStates\GameStates\LoadingState.cs" />
     <Compile Include="GameStates\GameStates\MainMenuState.cs" />
     <Compile Include="GameStates\GameStates\OptionsState.cs" />
+    <Compile Include="Input\ControlBinding.cs" />
     <Compile Include="Parameters.cs" />
     <Compile Include="Resources\GameResources.cs" />
     <Compile Include="Resources\ResourceCache.cs" />
@@ -150,6 +151,7 @@
     <Content Include="Resources\custom.txt" />
     <Content Include="Resources\fonts.txt" />
     <Content Include="Resources\music.txt" />
+    <None Include="Resources\settings.txt" />
     <Content Include="Resources\sounds.txt" />
     <Content Include="Resources\texture.txt" />
     <Content Include="Resources\tiles.txt" />
