@@ -11,6 +11,7 @@ using System.IO;
 using HeroEngineShared;
 using HeroEngine.Input;
 using Microsoft.Xna.Framework.Graphics;
+using HeroEngine.Resources.Classes;
 
 namespace HeroEngine.GameStates.GameStates
 {
@@ -32,7 +33,7 @@ namespace HeroEngine.GameStates.GameStates
         {
             //HACKY
             resourcemanager = manager;
-            manager.AddResource("videos", "videos/intromovie","intromovie");
+            manager.AddResource(GameResourceTypes.Video, "videos/intromovie","intromovie");
             _gamemanager.game.IsMouseVisible = false;
             _size.Width = _gamemanager.Graphics.PreferredBackBufferWidth;
             _size.Height = _gamemanager.Graphics.PreferredBackBufferHeight;
@@ -40,20 +41,22 @@ namespace HeroEngine.GameStates.GameStates
 
         public override void Unload(GameResources manager)
         {
-            manager.RemoveResource("videos", "intromovie");
+            manager.RemoveResource(GameResourceTypes.Video, "intromovie");
         }
 
         public override void Update(GameTime gameTime, InputHelper input)
         {
             if (!_introstarted)
             {
-                _gamemanager.VideoPlayer.Play((Video)resourcemanager.GetResource("videos", "intromovie"));
+                _gamemanager.VideoPlayer.Play((Video)resourcemanager.GetResource(GameResourceTypes.Video, "intromovie"));
                 _introstarted = true;
             }
             if (_gamemanager.VideoPlayer.State == MediaState.Stopped)
             {
                 //This means our video is done playing
-                _gamemanager.SwitchState(State.GameState.MainMenuState);
+                //_gamemanager.SwitchState(State.GameState.MainMenuState);
+                //For now lets exit
+                _gamemanager.ExitGame();
             }
             if (_gamemanager.VideoPlayer.State == MediaState.Playing)
             {
@@ -62,7 +65,9 @@ namespace HeroEngine.GameStates.GameStates
             if(input.AnyKeyPressed(true))
             {
                 _gamemanager.VideoPlayer.Stop();
-                _gamemanager.SwitchState(State.GameState.MainMenuState);
+                //_gamemanager.SwitchState(State.GameState.MainMenuState);
+                //For now lets exit
+                _gamemanager.ExitGame();
             }
         }
 

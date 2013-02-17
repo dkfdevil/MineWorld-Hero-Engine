@@ -196,7 +196,7 @@ namespace HeroEngine.GameStates
                 {
                     FileInfo ifo = new FileInfo(file);
                     string filename = ifo.Name.Replace(ifo.Extension, "");
-                    string data = (string)Resources.ResourceManager.GetObject(filename);
+                    string data = (string)DefaultResources.ResourceManager.GetObject(filename);
                     File.WriteAllText(Directory.GetCurrentDirectory() + file, data);
                 }
             }

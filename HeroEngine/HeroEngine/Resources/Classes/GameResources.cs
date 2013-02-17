@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using HeroEngine.Render;
+using HeroEngine.Resources.Classes;
 
 namespace HeroEngine.CoreGame
 {   
@@ -43,36 +44,36 @@ namespace HeroEngine.CoreGame
             videos = new ResourceCache<Video>(manager);
         }
 
-        public void AddResource(string type,string filepath,string name)
+        public void AddResource(GameResourceTypes type, string filepath, string name)
         {
             switch (type)
             {
-                case "texture2d":
+                case GameResourceTypes.Texture2D:
                     {
                         textures.AddResource(manager.Load<Texture2D>(filepath), name);
                         break;
                     }
-                case "animatetexture":
+                case GameResourceTypes.AnimatedTexture:
                     {
                         //Not implented
                         break;
                     }
-                case "fonts":
+                case GameResourceTypes.Fonts:
                     {
                         fonts.AddResource(manager.Load<SpriteFont>(filepath), name);
                         break;
                     }
-                case "sounds":
+                case GameResourceTypes.Sounds:
                     {
                         sounds.AddResource(manager.Load<SoundEffect>(filepath), name);
                         break;
                     }
-                case "music":
+                case GameResourceTypes.Music:
                     {
                         music.AddResource(manager.Load<Song>(filepath), name);
                         break;
                     }
-                case "videos":
+                case GameResourceTypes.Video:
                     {
                         videos.AddResource(manager.Load<Video>(filepath), name);
                         break;
@@ -84,36 +85,36 @@ namespace HeroEngine.CoreGame
             }
         }
 
-        public void RemoveResource(string type, string name)
+        public void RemoveResource(GameResourceTypes type, string name)
         {
             switch (type)
             {
-                case "texture2d":
+                case GameResourceTypes.Texture2D:
                     {
                         textures.RemoveResource(name);
                         break;
                     }
-                case "animatetexture":
+                case GameResourceTypes.AnimatedTexture:
                     {
                         //Not implented
                         break;
                     }
-                case "fonts":
+                case GameResourceTypes.Fonts:
                     {
                         fonts.RemoveResource(name);
                         break;
                     }
-                case "sounds":
+                case GameResourceTypes.Sounds:
                     {
                         sounds.RemoveResource(name);
                         break;
                     }
-                case "music":
+                case GameResourceTypes.Music:
                     {
                         music.RemoveResource(name);
                         break;
                     }
-                case "videos":
+                case GameResourceTypes.Video:
                     {
                         videos.RemoveResource(name);
                         break;
@@ -125,31 +126,31 @@ namespace HeroEngine.CoreGame
             }
         }
 
-        public object GetResource(string type, string name)
+        public object GetResource(GameResourceTypes type, string name)
         {
             switch (type)
             {
-                case "texture2d":
+                case GameResourceTypes.Texture2D:
                     {
                         return textures.GetResource(name);
                     }
-                case "animatetexture":
+                case GameResourceTypes.AnimatedTexture:
                     {
                         return null;
                     }
-                case "fonts":
+                case GameResourceTypes.Fonts:
                     {
                         return fonts.GetResource(name);
                     }
-                case "sounds":
+                case GameResourceTypes.Sounds:
                     {
                         return sounds.GetResource(name);
                     }
-                case "music":
+                case GameResourceTypes.Music:
                     {
                         return music.GetResource(name);
                     }
-                case "videos":
+                case GameResourceTypes.Video:
                     {
                         return videos.GetResource(name);
                     }

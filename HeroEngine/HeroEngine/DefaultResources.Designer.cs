@@ -22,14 +22,14 @@ namespace HeroEngine {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class DefaultResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal DefaultResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace HeroEngine {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HeroEngine.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HeroEngine.DefaultResources", typeof(DefaultResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,13 +61,7 @@ namespace HeroEngine {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MOVELEFT=A
-        ///MOVERIGHT=D
-        ///MOVEUP=W
-        ///MOVEDOWN=S
-        ///MENU=M
-        ///TORCH=F
-        ///PAUSE=Escape.
+        ///   Looks up a localized string similar to //Needs to be redone.
         /// </summary>
         internal static string binding {
             get {
@@ -124,7 +118,10 @@ namespace HeroEngine {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to [Video]
+        ///Width = 1024
+        ///Height = 768
+        ///Fullscreen = false.
         /// </summary>
         internal static string settings {
             get {
