@@ -105,6 +105,7 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml">
       <Private>False</Private>
     </Reference>
@@ -124,6 +125,7 @@
     <Compile Include="GameStates\GameStates\LoadingState.cs" />
     <Compile Include="GameStates\GameStates\MainMenuState.cs" />
     <Compile Include="GameStates\GameStates\OptionsState.cs" />
+    <Compile Include="Parameters.cs" />
     <Compile Include="Resources\GameResources.cs" />
     <Compile Include="Resources\ResourceCache.cs" />
     <Compile Include="GameStates\GameStateManager.cs" />

@@ -23,14 +23,10 @@ namespace HeroEngine
         //Standard Variable
         GameStateManager manager;
 
-        //Parameters
-        string[] parameters;
-        public MainGame(string[] args)
+        public MainGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-
-            parameters = args;
         }
 
         protected override void Initialize()
