@@ -53,7 +53,7 @@ namespace HeroEngine.Render
             this.Width = Width;
             this.Height = Height;
 
-            FullScreen = FullScreen;
+            this.FullScreen = FullScreen;
 
            ApplyResolutionSettings();
         }

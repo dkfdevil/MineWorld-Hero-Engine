@@ -54,9 +54,7 @@ namespace HeroEngine.GameStates.GameStates
             if (_gamemanager.VideoPlayer.State == MediaState.Stopped)
             {
                 //This means our video is done playing
-                //_gamemanager.SwitchState(State.GameState.MainMenuState);
-                //For now lets exit
-                _gamemanager.ExitGame();
+                _gamemanager.SwitchState(State.GameState.MainMenuState);
             }
             if (_gamemanager.VideoPlayer.State == MediaState.Playing)
             {
@@ -65,9 +63,7 @@ namespace HeroEngine.GameStates.GameStates
             if(input.AnyKeyPressed(true))
             {
                 _gamemanager.VideoPlayer.Stop();
-                //_gamemanager.SwitchState(State.GameState.MainMenuState);
-                //For now lets exit
-                _gamemanager.ExitGame();
+                _gamemanager.SwitchState(State.GameState.MainMenuState);
             }
         }
 

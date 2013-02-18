@@ -66,7 +66,8 @@ namespace HeroEngine.GameStates
 
             _screens = new BaseState[]
                            {
-                               new IntroState(this,State.GameState.IntroState)
+                               new IntroState(this,State.GameState.IntroState),
+                               new MainMenuState(this,State.GameState.MainMenuState)
                            };
 
             //Load the settings file

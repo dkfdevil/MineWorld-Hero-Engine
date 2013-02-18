@@ -32,15 +32,15 @@ namespace HeroEngine.CoreGame
         /// <param name="name">Name to use.</param>
         public void AddResource(obj_type resource, string name)
         {
-            if(resources.Keys.Contains(name))
+            if(resources.Keys.Contains(name.ToLower()))
             {
                 //throw AlreadyPresent;
-                resources[name] = resource;
+                resources[name.ToLower()] = resource;
                 System.Diagnostics.Debug.WriteLine("Overwriting " + name);
             }
             else
             {
-                resources.Add(name, resource);
+                resources.Add(name.ToLower(), resource);
                 System.Diagnostics.Debug.WriteLine("Adding " + name);
             }
         }
@@ -52,7 +52,7 @@ namespace HeroEngine.CoreGame
         /// <param name="name">Name to use.</param>
         public void RemoveResource(string name)
         {
-            if (resources.Keys.Contains(name))
+            if (resources.Keys.Contains(name.ToLower()))
             {
                 resources.Remove(name);
                 System.Diagnostics.Debug.WriteLine("Removing " + name);
@@ -66,7 +66,7 @@ namespace HeroEngine.CoreGame
         public obj_type GetResource(string name)
         {
             obj_type obj;
-            bool succes = resources.TryGetValue(name, out obj);
+            bool succes = resources.TryGetValue(name.ToLower(), out obj);
 
             if (!succes)
             {

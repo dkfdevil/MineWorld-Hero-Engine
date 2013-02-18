@@ -144,6 +144,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="MainGame.cs" />
     <Compile Include="Render\ResolutionMonitorManager.cs" />
+    <Compile Include="UserInterface\Items\BackGround.cs" />
+    <Compile Include="UserInterface\Items\Button.cs" />
+    <Compile Include="UserInterface\Items\Cursor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
