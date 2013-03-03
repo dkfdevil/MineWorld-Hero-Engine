@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HeroEngine.GameStates.GameStates
 {
-    class OptionsState
+    public class OptionsState
     {
     }
 }

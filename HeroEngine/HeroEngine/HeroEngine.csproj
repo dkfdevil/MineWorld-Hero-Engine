@@ -102,6 +102,9 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
+    <Reference Include="Nuclex.UserInterface">
+      <HintPath>..\..\..\..\..\Downloads\nuclex-framework-r1404-binaries\xna-4.0-x86\Nuclex.UserInterface.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -145,8 +148,8 @@
     <Compile Include="MainGame.cs" />
     <Compile Include="Render\ResolutionMonitorManager.cs" />
     <Compile Include="UserInterface\Items\BackGround.cs" />
-    <Compile Include="UserInterface\Items\Button.cs" />
     <Compile Include="UserInterface\Items\Cursor.cs" />
+    <Compile Include="UserInterface\Items\GlobalMenuConstants.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

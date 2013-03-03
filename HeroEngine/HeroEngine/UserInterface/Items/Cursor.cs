@@ -10,12 +10,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using HeroEngine.Input;
+using HeroEngine.UserInterface.Items;
 namespace HeroEngine.Screen
 {
     public class Cursor
     {
-        public int cursorsize = 15;
-        public Rectangle rectangle;
+        int screenHeight;
+        int screenWidth;
         public Texture2D tex;
         public Rectangle texturesize;
         public Vector2 Location;
@@ -23,15 +24,13 @@ namespace HeroEngine.Screen
         public Cursor(Texture2D cursor)
         {
             tex = cursor;
-            texturesize = new Rectangle(0, 0, cursorsize, cursorsize);
+            texturesize = new Rectangle(0, 0, GlobalMenuConstants.CursorSize, GlobalMenuConstants.CursorSize);
         }
 
         public void Update(InputHelper input)
         {
             Location.X = input.MousePosition.X;
             Location.Y = input.MousePosition.Y;
-
-            rectangle = new Rectangle((int)Location.X, (int)Location.Y, (int)Location.X + cursorsize, (int)Location.Y + cursorsize);
         }
 
         public void Draw(SpriteBatch sprbtch)

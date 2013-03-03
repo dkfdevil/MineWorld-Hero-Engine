@@ -392,6 +392,19 @@ namespace HeroEngine.Input
             return anykeypressed;
         }
 
+        public char GetKeyChar()
+        {
+
+            if (Keyboard.GetState().GetPressedKeys().Length > 0)
+            {
+                Keys key = Keyboard.GetState().GetPressedKeys()[0];
+                char chr = key.ToString().ToCharArray()[0];
+
+                return chr;
+            }
+            return new char();
+        }
+
         /// <summary>
         ///   Checks if the requested key is a current press.
         /// </summary>
